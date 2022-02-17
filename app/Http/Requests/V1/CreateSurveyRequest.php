@@ -27,17 +27,17 @@ class CreateSurveyRequest extends BaseRequest
     {
         return [
             'info.name' => 'required',
-            'form' => 'required|array|min:1',
-            'form.*.name' => 'required|distinct',
-            'form.*.type' => 'required|in:text,string,datepicker,checkbox,radio,dropdown,file,range',
-            'form.*.min' => 'nullable',
-            'form.*.max' => 'nullable',
-            'form.*.max_size' => 'nullable|numeric',
-            'form.*.char_count' => 'nullable',
-            'form.*.options' => 'nullable|array',
-            'form.*.optional' => 'boolean',
-            'form.*.multiple' => 'boolean',
-            'form.*' => function ($attr, $value, $fail) {
+            'forms' => 'required|array|min:1',
+            'forms.*.name' => 'required|distinct',
+            'forms.*.type' => 'required|in:text,string,datepicker,checkbox,radio,dropdown,file,range',
+            'forms.*.min' => 'nullable',
+            'forms.*.max' => 'nullable',
+            'forms.*.max_size' => 'nullable|numeric',
+            'forms.*.char_count' => 'nullable',
+            'forms.*.options' => 'nullable|array',
+            'forms.*.optional' => 'boolean',
+            'forms.*.multiple' => 'boolean',
+            'forms.*' => function ($attr, $value, $fail) {
                 if ($value['type'] === 'range') {
                     if (empty($value['min']) || empty($value['max'])) {
                         $fail('Min and max value is required for range type. (' . $attr . ')');

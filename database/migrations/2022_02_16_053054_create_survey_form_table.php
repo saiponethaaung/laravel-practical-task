@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('survey_id');
             $table->string('name')->nullable();
+            $table->string('values')->nullable();
             $table->enum('type', ['text', 'string', 'datepicker', 'checkbox', 'radio', 'dropdown', 'file', 'range']);
             $table->string('min')->nullable();
             $table->string('max')->nullable();

@@ -81,7 +81,7 @@ class SurveyServiceImpl implements SurveyService
 
     function createSurvey(Request $request)
     {
-        $input = $request->only('info', 'form');
+        $input = $request->only('info', 'forms');
         $input['info']['user_id'] = $request->user()->id;
 
         return $this->repo->create($input);

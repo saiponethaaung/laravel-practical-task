@@ -22,5 +22,6 @@ class SurveyForm extends Model
         'char_count',
         'options',
         'optional',
+        'multiple',
     ];
 }
