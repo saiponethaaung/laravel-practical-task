@@ -51996,7 +51996,7 @@ var render = function () {
           _c(
             "b-container",
             [
-              _c("b-navbar-brand", { attrs: { href: "#" } }, [
+              _c("b-navbar-brand", { attrs: { href: "/" } }, [
                 _vm._v("Survey APP"),
               ]),
             ],

@@ -14,18 +14,16 @@ class SurveyAnswered
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $owner;
-    public $answers = [];
+    public $answer;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($owner, $answers = [])
+    public function __construct($answer)
     {
-        $this->owner = $owner;
-        $this->answers = $answers;
+        $this->answer = $answer;
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\SurveyAnswer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,14 +12,11 @@ class SurveyAnsweredNotification extends Notification
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    private $surveyAnswer;
+
+    public function __construct(SurveyAnswer $surveyAnswer)
     {
-        //
+        $this->surveyAnswer = $surveyAnswer;
     }
 
     /**
@@ -41,8 +39,16 @@ class SurveyAnsweredNotification extends Notification
     public function toMail($notifiable)
     {
         $mail = (new MailMessage);
-        $mail->line('The introduction to the notification.');
-        $mail->action('Notification Action', url('/'));
+        $mail->line('Your survey is answer by ' . $this->surveyAnswer->user->name . '(' . $this->surveyAnswer->user->email . ').');
+        $mail->line('');
+        $mail->line('');
+
+        foreach ($this->surveyAnswer->answers as $answer) {
+            $mail->line($answer->form->name . ': ' . $answer->answer);
+        }
+
+        $mail->line('');
+        $mail->line('');
         $mail->line('Thank you for using our application!');
 
         return $mail;

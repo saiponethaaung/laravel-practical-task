@@ -81,6 +81,7 @@ class SurveyRepositoryImpl implements SurveyRepository
                 $form['survey_answer_id'] = $survey->id;
                 SurveyAnswerForm::create($form);
             }
+            $res['data']['answer'] = $survey->id;
         } catch (\Exception $e) {
             DB::rollback();
             $res['status'] = 'false';
