@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('spa');
 });
+
+
+Route::any('{any}/{all?}', function () {
+    return view('spa');
+})->where('all', '.+');

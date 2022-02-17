@@ -36,7 +36,7 @@ class SurveyRepositoryImpl implements SurveyRepository
         try {
             $survey = Survey::create($input['info']);
 
-            foreach ($input['form'] as $form) {
+            foreach ($input['forms'] as $form) {
                 $form['survey_id'] = $survey->id;
                 if (empty($form['options'])) {
                     $form['options'] = [];
