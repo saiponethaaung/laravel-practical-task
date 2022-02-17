@@ -2,7 +2,7 @@
     <div>
         <b-navbar variant="faded" type="light">
             <b-container>
-                <b-navbar-brand href="#">Survey APP</b-navbar-brand>
+                <b-navbar-brand href="/">Survey APP</b-navbar-brand>
             </b-container>
         </b-navbar>
         <template v-if="!authenticating">

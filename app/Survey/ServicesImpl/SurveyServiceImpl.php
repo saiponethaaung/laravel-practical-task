@@ -2,6 +2,7 @@
 
 namespace App\Survey\ServicesImpl;
 
+use App\Events\SurveyAnswered;
 use App\Survey\Repositories\SurveyRepository;
 use App\Survey\Services\SurveyService;
 use Illuminate\Http\Request;
@@ -95,6 +96,12 @@ class SurveyServiceImpl implements SurveyService
             'user_id' => $request->user()->id,
         ];
 
-        return $this->repo->addAnswer($request->surveyID, $input);
+        $addAnswer = $this->repo->addAnswer($request->surveyID, $input);
+
+        if ($addAnswer['status']) {
+            SurveyAnswered::dispatch($addAnswer['data']['answer']);
+        }
+
+        return $addAnswer;
     }
 }

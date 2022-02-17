@@ -16,4 +16,9 @@ class SurveyAnswerForm extends Model
         'survey_form_id',
         'answer',
     ];
+
+    public function form()
+    {
+        return $this->belongsTo('App\Models\SurveyForm', 'survey_form_id', 'id');
+    }
 }

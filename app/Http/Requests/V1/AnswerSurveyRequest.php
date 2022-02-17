@@ -30,7 +30,7 @@ class AnswerSurveyRequest extends BaseRequest
         return [
             'forms' => 'required|array|size:' . $count,
             'forms.*' => function ($attr, $value, $fail) {
-                $form = \App\Models\SurveyForm::find($value['survey_form_id']);
+                $form = \App\Models\SurveyForm::where('survey_id', request()->surveyID)->find($value['survey_form_id']);
 
                 if (empty($form) || is_null($form)) {
                     $fail('Invalid form id!(' . $attr . ')');

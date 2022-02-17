@@ -20,4 +20,9 @@ class Survey extends Model
     {
         return $this->hasMany('App\Models\SurveyForm');
     }
+
+    public function owner()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
 }
