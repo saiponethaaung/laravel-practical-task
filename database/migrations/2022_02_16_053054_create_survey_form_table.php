@@ -20,11 +20,11 @@ return new class extends Migration
             $table->enum('type', ['text', 'string', 'datepicker', 'checkbox', 'radio', 'dropdown', 'file', 'range']);
             $table->string('min')->nullable();
             $table->string('max')->nullable();
-            $table->string('values')->nullable();
             $table->bigInteger('max_size')->default(-1);
             $table->bigInteger('char_count')->default(-1);
             $table->text('options')->nullable();
             $table->boolean('optional')->default(false);
+            $table->boolean('multiple')->default(false);
             $table->timestamps();
 
             $table->index('survey_id');
